@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="website_cart_inherit_cart_display" inherit_id="website_sale.cart_lines">
+            <xpath expr="//td[hasclass('td-product_name')]" position="inside">
+                <t t-foreach="website_product_ids" t-as="website_product_id">
+                    <t t-if="line.product_template_id.id == website_product_id">
+                        <t t-if="website_product_ids[website_product_id]">
+                            <h6 style="color:#73cfee; text-decoration: underline;">BOM</h6>
+                        </t>
+                        <t t-foreach="website_product_ids[website_product_id]" t-as="bom">
+                            <t t-esc="bom"/>
+                            <br></br>
+                        </t>
+                    </t>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>
